@@ -713,6 +713,7 @@
                 <span class="contact-card-label">EMAIL ADDRESS / メール</span>
                 <span class="contact-card-val">patwalpranav@gmail.com</span>
               </div>
+              <button type="button" class="card-copy-btn" data-copy-text="patwalpranav@gmail.com" data-copy-label="Email" title="Copy Email">Copy</button>
             </a>
 
             <a href="tel:+919643792352" class="contact-card-item" title="Call Direct">
@@ -721,6 +722,7 @@
                 <span class="contact-card-label">PHONE NUMBER / 電話番号</span>
                 <span class="contact-card-val">+91 96437 92352</span>
               </div>
+              <button type="button" class="card-copy-btn" data-copy-text="+919643792352" data-copy-label="Phone" title="Copy Phone">Copy</button>
             </a>
 
             <a href="https://linkedin.com/in/pranavpatwal" target="_blank" rel="noopener noreferrer" class="contact-card-item" title="Visit LinkedIn">
@@ -863,6 +865,63 @@
         <button class="quick-cmd-pill" data-cmd="projects">projects</button>
         <button class="quick-cmd-pill" data-cmd="japan">japan (日本語)</button>
         <button class="quick-cmd-pill" data-cmd="clear">clear</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT DISPATCH MODAL (Message Hub) -->
+  <div class="contact-modal-backdrop" id="contact-dispatch-modal" role="dialog" aria-modal="true" aria-label="Contact Dispatch Hub">
+    <div class="contact-modal-card">
+      <div class="contact-modal-header">
+        <h3 class="contact-modal-title">
+          <span>✉️</span>
+          <span>Message Ready / 送信準備完了</span>
+        </h3>
+        <button class="contact-modal-close" id="contact-modal-close-btn" aria-label="Close">✕</button>
+      </div>
+
+      <div class="dispatch-preview-box">
+        <div class="dispatch-preview-line"><strong>TO:</strong> Pranav Patwal &lt;patwalpranav@gmail.com&gt;</div>
+        <div class="dispatch-preview-line"><strong>FROM:</strong> <span id="dispatch-preview-from">...</span></div>
+        <div class="dispatch-preview-line"><strong>SUBJECT:</strong> <span id="dispatch-preview-subject">...</span></div>
+      </div>
+
+      <div class="dispatch-options-group">
+        <!-- Option 1: Web Gmail -->
+        <a href="#" id="dispatch-gmail-btn" target="_blank" rel="noopener noreferrer" class="btn-dispatch primary-dispatch">
+          <div class="dispatch-icon-label">
+            <span style="font-size: 1.2rem;">🚀</span>
+            <div>
+              <div>Send via Web Gmail</div>
+              <div style="font-size: 0.72rem; color: var(--text-muted); font-weight: normal;">Opens pre-filled message directly in browser Gmail</div>
+            </div>
+          </div>
+          <span>➔</span>
+        </a>
+
+        <!-- Option 2: Default Mail Client -->
+        <a href="#" id="dispatch-mailto-btn" class="btn-dispatch">
+          <div class="dispatch-icon-label">
+            <span style="font-size: 1.2rem;">💻</span>
+            <div>
+              <div>Open Default Mail App</div>
+              <div style="font-size: 0.72rem; color: var(--text-muted); font-weight: normal;">Outlook, Thunderbird, or Apple Mail</div>
+            </div>
+          </div>
+          <span>➔</span>
+        </a>
+
+        <!-- Option 3: Copy Draft -->
+        <button type="button" id="dispatch-copy-btn" class="btn-dispatch">
+          <div class="dispatch-icon-label">
+            <span style="font-size: 1.2rem;">📋</span>
+            <div>
+              <div>Copy Full Message &amp; Email</div>
+              <div style="font-size: 0.72rem; color: var(--text-muted); font-weight: normal;">Copy drafted text to paste anywhere</div>
+            </div>
+          </div>
+          <span id="dispatch-copy-label">Copy</span>
+        </button>
       </div>
     </div>
   </div>

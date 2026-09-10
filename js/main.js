@@ -195,7 +195,41 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Contact Form Submission (Interactive Mock with mailto fallback)
+  // Contact Form Submission & Dispatch Hub
   const contactForm = document.getElementById('portfolio-contact-form');
+  const dispatchModal = document.getElementById('contact-dispatch-modal');
+  const dispatchCloseBtn = document.getElementById('contact-modal-close-btn');
+  const dispatchPreviewFrom = document.getElementById('dispatch-preview-from');
+  const dispatchPreviewSubject = document.getElementById('dispatch-preview-subject');
+  const dispatchGmailBtn = document.getElementById('dispatch-gmail-btn');
+  const dispatchMailtoBtn = document.getElementById('dispatch-mailto-btn');
+  const dispatchCopyBtn = document.getElementById('dispatch-copy-btn');
+  const dispatchCopyLabel = document.getElementById('dispatch-copy-label');
+
+  let currentDraft = { to: 'patwalpranav@gmail.com', from: '', subject: '', body: '' };
+
+  function closeDispatchModal() {
+    if (dispatchModal) {
+      dispatchModal.classList.remove('active');
+    }
+  }
+
+  if (dispatchCloseBtn) {
+    dispatchCloseBtn.addEventListener('click', closeDispatchModal);
+  }
+
+  if (dispatchModal) {
+    dispatchModal.addEventListener('click', (e) => {
+      if (e.target === dispatchModal) closeDispatchModal();
+    });
+  }
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && dispatchModal && dispatchModal.classList.contains('active')) {
+      closeDispatchModal();
+    }
+  });
+
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -209,12 +243,57 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Trigger mailto client
-      const mailtoLink = `mailto:patwalpranav@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`From: ${name} (${email})\n\n${message}`)}`;
-      window.location.href = mailtoLink;
+      const formattedBody = `From: ${name} (${email})\n\n${message}\n\n---\nSent via Pranav Patwal Portfolio`;
 
-      showToast(`Thank you ${name}! Opening mail client...`);
-      contactForm.reset();
+      currentDraft = {
+        to: 'patwalpranav@gmail.com',
+        from: `${name} <${email}>`,
+        subject: subject,
+        body: formattedBody
+      };
+
+      // Populate preview in modal
+      if (dispatchPreviewFrom) dispatchPreviewFrom.textContent = currentDraft.from;
+      if (dispatchPreviewSubject) dispatchPreviewSubject.textContent = currentDraft.subject;
+
+      // Configure Gmail Web Link (100% reliable for browser users)
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=patwalpranav@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(formattedBody)}`;
+      if (dispatchGmailBtn) {
+        dispatchGmailBtn.href = gmailUrl;
+        dispatchGmailBtn.onclick = () => {
+          showToast('Opening Gmail composer in browser...');
+          setTimeout(closeDispatchModal, 800);
+        };
+      }
+
+      // Configure Desktop Mailto Link
+      const mailtoUrl = `mailto:patwalpranav@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(formattedBody)}`;
+      if (dispatchMailtoBtn) {
+        dispatchMailtoBtn.href = mailtoUrl;
+        dispatchMailtoBtn.onclick = () => {
+          showToast('Opening default mail client...');
+          setTimeout(closeDispatchModal, 800);
+        };
+      }
+
+      // Configure Copy Draft Button
+      if (dispatchCopyBtn) {
+        dispatchCopyBtn.onclick = () => {
+          const fullDraftText = `To: patwalpranav@gmail.com\nSubject: ${subject}\n\n${formattedBody}`;
+          copyText(fullDraftText, 'Draft & Email');
+          if (dispatchCopyLabel) dispatchCopyLabel.textContent = '✓ Copied!';
+          setTimeout(() => {
+            if (dispatchCopyLabel) dispatchCopyLabel.textContent = 'Copy';
+            closeDispatchModal();
+          }, 1200);
+        };
+      }
+
+      // Open Modal
+      sfx.playChime();
+      if (dispatchModal) {
+        dispatchModal.classList.add('active');
+      }
     });
   }
 
