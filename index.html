@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pranav Patwal | Linux System Administrator (RHCSA) & Japan Enthusiast</title>
+  
+  <!-- SEO & Metadata -->
+  <meta name="description" content="Portfolio of Pranav Patwal - RHCSA certified Linux System Administrator, RHEL 9 specialist, Python/Bash automation, and JLPT N4 Japanese certified.">
+  <meta name="keywords" content="Pranav Patwal, RHCSA, Linux System Administrator, RHEL 9, Bash, Python, JLPT N4, New Delhi, IT Infrastructure">
+  <meta name="author" content="Pranav Patwal">
+  <meta property="og:title" content="Pranav Patwal | Linux System Administrator (RHCSA)">
+  <meta property="og:description" content="RHCSA-certified Linux Administrator & IT Infrastructure Engineer. JLPT N4 Certified.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon Icon (Hanko Seal SVG) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='90' height='90' x='5' y='5' rx='18' fill='%230a0e17' stroke='%23ff385c' stroke-width='6'/%3E%3Ctext x='50' y='64' font-family='sans-serif' font-size='48' font-weight='bold' fill='%23ff385c' text-anchor='middle'%3E普%3C/text%3E%3C/svg%3E">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/terminal.css">
+</head>
+<body>
+
+  <!-- Interactive Falling Sakura Canvas -->
+  <canvas id="sakura-canvas"></canvas>
+  <div class="pattern-overlay"></div>
+
+  <!-- NAVIGATION BAR -->
+  <header>
+    <nav class="navbar" id="navbar">
+      <div class="container nav-container">
+        <a href="#home" class="logo" aria-label="Pranav Patwal Home">
+          <div class="hanko-seal" title="Hanko Stamp: Pranav (普)">普</div>
+          <div class="logo-text">
+            <span class="logo-name">PRANAV PATWAL</span>
+            <span class="logo-role">RHCSA // システム管理者</span>
+          </div>
+        </a>
+
+        <!-- Desktop & Mobile Links -->
+        <ul class="nav-links" id="nav-links">
+          <li>
+            <a href="#home" class="nav-link active">
+              <span>Overview</span>
+              <span class="nav-kanji">概要</span>
+            </a>
+          </li>
+          <li>
+            <a href="#certifications" class="nav-link">
+              <span>Credentials</span>
+              <span class="nav-kanji">資格認定</span>
+            </a>
+          </li>
+          <li>
+            <a href="#projects" class="nav-link">
+              <span>Projects</span>
+              <span class="nav-kanji">プロジェクト</span>
+            </a>
+          </li>
+          <li>
+            <a href="#skills" class="nav-link">
+              <span>Skills</span>
+              <span class="nav-kanji">技術能力</span>
+            </a>
+          </li>
+          <li>
+            <a href="#education" class="nav-link">
+              <span>Education</span>
+              <span class="nav-kanji">学歴</span>
+            </a>
+          </li>
+          <li>
+            <a href="#contact" class="nav-link">
+              <span>Contact</span>
+              <span class="nav-kanji">連絡先</span>
+            </a>
+          </li>
+        </ul>
+
+        <!-- Action Controls -->
+        <div class="nav-actions">
+          <button class="icon-btn" id="sakura-toggle-btn" title="Toggle Falling Sakura (桜切替)" aria-label="Toggle Sakura">🌸</button>
+          <button class="icon-btn" id="audio-toggle-btn" title="Enable Sound Effects (効果音)" aria-label="Toggle Sound Effects">🔕</button>
+          
+          <button class="btn-terminal-trigger" id="open-terminal-btn" aria-label="Open Linux Terminal">
+            <span class="pulse-dot"></span>
+            <span>RHEL 9 CLI</span>
+          </button>
+          
+          <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Navigation Menu">☰</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <!-- Left Hero Content -->
+        <div class="hero-content">
+          <div class="hero-badge-group">
+            <span class="hero-pill rhcsa">
+              <span style="color: #ff385c;">●</span> RHCSA Certified #240-166-678
+            </span>
+            <span class="hero-pill japan">
+              <span>🇯🇵</span> JLPT N4 Certified (日本語)
+            </span>
+            <span class="hero-pill location">
+              <span>📍</span> New Delhi, India
+            </span>
+          </div>
+
+          <div class="hero-title-wrap">
+            <span class="hero-greeting">はじめまして • WELCOME</span>
+            <h1 class="hero-name">PRANAV PATWAL</h1>
+            <div class="hero-subtitle">
+              <span>$ systemctl status sysadmin --enterprise</span>
+              <span class="cursor"></span>
+            </div>
+          </div>
+
+          <p class="hero-bio">
+            <strong>RHCSA-certified Linux System Administrator</strong> and B.Com (Honours) graduate with specialized hands-on competence in deploying, hardening, and orchestrating <strong>Red Hat Enterprise Linux (RHEL 9)</strong> environments. Certified in Japanese (<strong>JLPT N4</strong>), bridging disciplined technical infrastructure with cross-cultural enterprise agility.
+          </p>
+
+          <div class="hero-cta-group">
+            <button class="btn-primary btn-terminal-inline" id="hero-terminal-btn">
+              <span>[ &gt;_ Launch RHEL 9 CLI ]</span>
+            </button>
+            <a href="#projects" class="btn-secondary">
+              <span>View Projects / 業務実績</span>
+            </a>
+            <a href="mailto:patwalpranav@gmail.com" class="btn-secondary">
+              <span>Hire Me / 採用問い合わせ</span>
+            </a>
+          </div>
+
+          <!-- Quick Metrics / Stats -->
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-val">RHEL <span>9</span></span>
+              <span class="stat-label">Enterprise Platform</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-val">3<span>+</span></span>
+              <span class="stat-label">Core Certifications</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-val">JLPT <span>N4</span></span>
+              <span class="stat-label">Japanese Proficiency</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Hero Visual / Avatar -->
+        <div class="hero-visual-card">
+          <div class="avatar-frame">
+            <!-- Modern Cyberpunk Tokyo/Kyoto Avatar -->
+            <img src="avatar.jpg" 
+                 onerror="this.onerror=null; this.src='file:///C:/Users/Pranav%20Patwal/.gemini/antigravity-ide/brain/fe62c803-9aa7-4379-9f60-2c8fdbd379e7/pranav_cyber_avatar_1789043040857.jpg';" 
+                 alt="Pranav Patwal - Linux Administrator in Neo-Tokyo Kyoto aesthetic" 
+                 class="avatar-img">
+            
+            <div class="avatar-hud-tag">
+              <div class="hud-details">
+                <span class="hud-title">HOST: rhel9-box.pranav.lab</span>
+                <span class="hud-sub">STATUS: ACTIVE &amp; READY FOR DEPLOYMENT</span>
+              </div>
+              <div class="hud-kanji-stamp" title="Certified (認定)">合格</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS SECTION (資格認定) -->
+    <section class="section" id="certifications">
+      <div class="container">
+        <span class="kanji-watermark">資格</span>
+        <div class="section-header">
+          <span class="kanji-sub">CREDENTIALS &amp; CERTIFICATIONS</span>
+          <h2 class="section-title">Verified Technical Qualifications</h2>
+          <p class="section-desc">
+            Rigorous, officially verified certifications validating enterprise Linux system administration, foundational IT mastery, and Japanese language fluency.
+          </p>
+          <div class="torii-divider" style="margin: 1.2rem 0 0;">
+            <div class="line"></div>
+            <span class="knot">⛩️</span>
+            <div class="line right"></div>
+          </div>
+        </div>
+
+        <div class="certs-grid">
+          <!-- RHCSA Card (Featured) -->
+          <div class="cert-card featured">
+            <div>
+              <div class="cert-header">
+                <div class="cert-icon-wrap" title="Red Hat">
+                  <span style="font-weight: 900; color: #ff385c;">RH</span>
+                </div>
+                <span class="cert-badge-pill">OFFICIAL RED HAT</span>
+              </div>
+              <h3 class="cert-title">Red Hat Certified System Administrator (RHCSA)</h3>
+              <div class="cert-issuer">
+                <span>Issuer: Red Hat</span>
+                <span>•</span>
+                <span>July 2025</span>
+              </div>
+              <p class="cert-desc">
+                Core credential demonstrating command over Red Hat Enterprise Linux 9: configuring local storage with LVM, user/group security policies, SELinux enforcement, systemd service lifecycle, and network post-install hardening.
+              </p>
+              <div class="cert-skills-tags">
+                <span class="cert-tag">RHEL 9</span>
+                <span class="cert-tag">LVM Storage</span>
+                <span class="cert-tag">systemd</span>
+                <span class="cert-tag">SELinux</span>
+                <span class="cert-tag">dnf / rpm</span>
+                <span class="cert-tag">Bash Runbooks</span>
+              </div>
+            </div>
+            <div class="cert-footer">
+              <div class="credential-id-box" data-copy-text="240-166-678" data-copy-label="RHCSA Credential ID" title="Click to copy Credential ID">
+                <span>ID: 240-166-678</span>
+                <span style="font-size: 0.75rem;">📋</span>
+              </div>
+              <span class="cert-date">Issued: 07/2025</span>
+            </div>
+          </div>
+
+          <!-- JLPT N4 Card -->
+          <div class="cert-card jlpt">
+            <div>
+              <div class="cert-header">
+                <div class="cert-icon-wrap" title="Japan Foundation">
+                  <span>🇯🇵</span>
+                </div>
+                <span class="cert-badge-pill" style="color: #fba4b6; border-color: rgba(251,164,182,0.3); background: rgba(251,164,182,0.1);">日本語能力試験</span>
+              </div>
+              <h3 class="cert-title">Japanese-Language Proficiency Test (JLPT) – Level N4</h3>
+              <div class="cert-issuer">
+                <span>The Japan Foundation &amp; JEES</span>
+                <span>•</span>
+                <span>August 2026</span>
+              </div>
+              <p class="cert-desc">
+                Certified proficiency in Japanese reading, listening, grammar, ~300 Kanji, and ~1,500 vocabulary words. Equipped to understand daily passages and collaborate in bilingual Japanese IT contexts.
+              </p>
+              <div class="cert-skills-tags">
+                <span class="cert-tag">日本語 (Japanese)</span>
+                <span class="cert-tag">Kanji (~300)</span>
+                <span class="cert-tag">Grammar (N4)</span>
+                <span class="cert-tag">Cross-Cultural IT</span>
+                <span class="cert-tag">Technical Reading</span>
+              </div>
+            </div>
+            <div class="cert-footer">
+              <div class="credential-id-box" style="color: var(--sakura-pink); border-color: rgba(251,164,182,0.3); background: rgba(251,164,182,0.08);" data-copy-text="JLPT N4 Certified" data-copy-label="JLPT Level" title="JLPT Level N4">
+                <span>Certified Level: N4</span>
+                <span style="font-size: 0.75rem;">🌸</span>
+              </div>
+              <span class="cert-date">Issued: 08/2026</span>
+            </div>
+          </div>
+
+          <!-- NIELIT 'O' Level Card -->
+          <div class="cert-card">
+            <div>
+              <div class="cert-header">
+                <div class="cert-icon-wrap" title="NIELIT">
+                  <span style="font-weight: 700; color: #00d2ff;">IT</span>
+                </div>
+                <span class="cert-badge-pill">GOVERNMENT OF INDIA</span>
+              </div>
+              <h3 class="cert-title">'O' Level Certificate in Information Technology</h3>
+              <div class="cert-issuer">
+                <span>National Institute of Electronics &amp; IT (NIELIT)</span>
+                <span>•</span>
+                <span>May 2025</span>
+              </div>
+              <p class="cert-desc">
+                Comprehensive foundation encompassing IT architecture, operating system fundamentals, web technologies, programming logic, and computational problem-solving.
+              </p>
+              <div class="cert-skills-tags">
+                <span class="cert-tag">IT Infrastructure</span>
+                <span class="cert-tag">OS Principles</span>
+                <span class="cert-tag">Web Foundations</span>
+                <span class="cert-tag">Problem Solving</span>
+              </div>
+            </div>
+            <div class="cert-footer">
+              <div class="credential-id-box" data-copy-text="AEDLB001605878076063" data-copy-label="NIELIT ID" title="Click to copy Credential ID">
+                <span>ID: AEDLB00160...</span>
+                <span style="font-size: 0.75rem;">📋</span>
+              </div>
+              <span class="cert-date">Issued: 05/2025</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECHNICAL PROJECTS & LABS (プロジェクト) -->
+    <section class="section" id="projects">
+      <div class="container">
+        <span class="kanji-watermark">実績</span>
+        <div class="section-header">
+          <span class="kanji-sub">HANDS-ON INFRASTRUCTURE &amp; LABS</span>
+          <h2 class="section-title">Technical Projects &amp; Experience</h2>
+          <p class="section-desc">
+            End-to-end administration labs, Python automation scripts, and financial reconciliations built with enterprise best practices.
+          </p>
+          <div class="torii-divider" style="margin: 1.2rem 0 0;">
+            <div class="line"></div>
+            <span class="knot">⛩️</span>
+            <div class="line right"></div>
+          </div>
+        </div>
+
+        <div class="projects-container">
+          <!-- Featured Project 1: Linux Administration Lab -->
+          <div class="project-feature-card">
+            <div class="project-grid">
+              <div>
+                <div class="project-meta-top">
+                  <span class="project-type-pill">CORE INFRASTRUCTURE</span>
+                  <span class="project-year">2025</span>
+                </div>
+                <h3 class="project-title">Linux System Administration Lab</h3>
+                <ul class="project-desc-points">
+                  <li>Built and administered <strong>Red Hat Enterprise Linux 9</strong> virtual machines end-to-end, executing initial provisioning, network addressing, and post-installation security hardening.</li>
+                  <li>Governed users and groups, enforced stringent password aging and account lockout policies, and applied precise POSIX permissions, Access Control Lists (<code>setfacl</code>), and special permission bits (<code>SUID</code>, <code>SGID</code>, <code>Sticky Bit</code>).</li>
+                  <li>Supervised software lifecycle with <code>dnf</code>/<code>rpm</code>, configured local offline and remote mirrors, and orchestrated service states and boot targets using <code>systemctl</code>.</li>
+                  <li>Executed storage tasks including GPT disk partitioning, <strong>Logical Volume Management (LVM)</strong> physical volumes, volume groups, and dynamic logical volume sizing with persistent mounts in <code>/etc/fstab</code>.</li>
+                  <li>Diagnosed boot sequence issues, permissions denials, and daemon crashes using <code>journalctl</code> and <code>systemctl</code> log analysis, authoring reusable disaster-recovery runbooks.</li>
+                </ul>
+                <div class="project-tags">
+                  <span class="project-tag">RHEL 9</span>
+                  <span class="project-tag">Bash</span>
+                  <span class="project-tag">systemd</span>
+                  <span class="project-tag">LVM Storage</span>
+                  <span class="project-tag">journalctl</span>
+                  <span class="project-tag">Security Hardening</span>
+                </div>
+              </div>
+
+              <!-- Terminal Preview Component -->
+              <div class="project-visual-terminal">
+                <div class="pvt-header">
+                  <div class="pvt-dots">
+                    <span class="pvt-dot red"></span>
+                    <span class="pvt-dot yellow"></span>
+                    <span class="pvt-dot green"></span>
+                  </div>
+                  <span class="pvt-title">rhel9-storage-setup.sh</span>
+                </div>
+                <div class="pvt-body">
+                  <div class="pvt-line"><span class="pvt-prompt">[root@rhel9 ~]#</span> <span class="pvt-cmd">pvcreate /dev/sdb1</span></div>
+                  <div class="pvt-line pvt-success">  Physical volume "/dev/sdb1" successfully created.</div>
+                  <div class="pvt-line"><span class="pvt-prompt">[root@rhel9 ~]#</span> <span class="pvt-cmd">vgcreate vg_data /dev/sdb1</span></div>
+                  <div class="pvt-line pvt-success">  Volume group "vg_data" successfully created</div>
+                  <div class="pvt-line"><span class="pvt-prompt">[root@rhel9 ~]#</span> <span class="pvt-cmd">lvcreate -L 20G -n lv_prod vg_data</span></div>
+                  <div class="pvt-line pvt-success">  Logical volume "lv_prod" created.</div>
+                  <div class="pvt-line"><span class="pvt-prompt">[root@rhel9 ~]#</span> <span class="pvt-cmd">mkfs.xfs /dev/vg_data/lv_prod</span></div>
+                  <div class="pvt-line pvt-accent">  meta-data=/dev/vg_data/lv_prod isize=512</div>
+                  <div class="pvt-line"><span class="pvt-prompt">[root@rhel9 ~]#</span> <span class="pvt-cmd">echo '/dev/vg_data/lv_prod /data xfs defaults 0 0' &gt;&gt; /etc/fstab</span></div>
+                  <div class="pvt-line"><span class="pvt-prompt">[root@rhel9 ~]#</span> <span class="pvt-cmd">mount -a &amp;&amp; systemctl daemon-reload</span></div>
+                  <div class="pvt-line pvt-success">  ✓ Persistent mount active and verified!</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Secondary Projects Row -->
+          <div class="secondary-projects-grid">
+            <!-- Project 2: Python Automation Scripts -->
+            <div class="sub-project-card">
+              <div>
+                <div class="project-meta-top">
+                  <span class="project-type-pill" style="color: var(--cyber-jade); border-color: rgba(0,245,160,0.3); background: rgba(0,245,160,0.08);">AUTOMATION &amp; SCRIPTING</span>
+                  <span class="project-year">2025 – 2026</span>
+                </div>
+                <h3 class="project-title" style="font-size: 1.45rem;">Python Automation &amp; Log Parsers</h3>
+                <ul class="project-desc-points" style="margin-bottom: 1.5rem;">
+                  <li>Engineered Python automation scripts to replace manual file, batch, and text-processing workflows utilizing Python standard libraries (<code>os</code>, <code>sys</code>, <code>re</code>, <code>shutil</code>).</li>
+                  <li>Implemented regular expression log filtering to extract error codes and status signals from multi-gigabyte Apache/Syslog dumps.</li>
+                  <li>Maintained strict version control in Git, utilizing clean feature branches and descriptive commit logs.</li>
+                  <li><strong>Quantifiable Impact:</strong> Reduced a 30-minute tedious manual sorting and renaming process across 500+ files to under 60 seconds of automated execution.</li>
+                </ul>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag">Python 3</span>
+                <span class="project-tag">Bash</span>
+                <span class="project-tag">Regex Parsing</span>
+                <span class="project-tag">Git Branches</span>
+                <span class="project-tag">Log Filtering</span>
+              </div>
+            </div>
+
+            <!-- Project 3: Spreadsheet Data Handling & Reporting -->
+            <div class="sub-project-card">
+              <div>
+                <div class="project-meta-top">
+                  <span class="project-type-pill" style="color: var(--gold-kintsugi); border-color: rgba(224,179,84,0.3); background: rgba(224,179,84,0.08);">DATA &amp; REPORTING</span>
+                  <span class="project-year">2024 – 2026</span>
+                </div>
+                <h3 class="project-title" style="font-size: 1.45rem;">Spreadsheet Data Handling &amp; Reporting</h3>
+                <ul class="project-desc-points" style="margin-bottom: 1.5rem;">
+                  <li>Cleaned, transformed, and consolidated high-volume transactional datasets using Microsoft Excel formulas (<code>VLOOKUP</code>, <code>XLOOKUP</code>, <code>IF</code>, <code>SUMIF</code>, <code>COUNTIF</code>) and interactive Pivot Tables.</li>
+                  <li>Created automated summary dashboards for executive reporting, highlighting budget discrepancies and cost-center allocations.</li>
+                  <li>Recorded and audited complex double-entry accounting records in <strong>Tally</strong> as part of university commerce coursework, producing audited ledgers and profit-loss reconciliations.</li>
+                </ul>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag">MS Excel</span>
+                <span class="project-tag">Tally ERP</span>
+                <span class="project-tag">Pivot Tables</span>
+                <span class="project-tag">VLOOKUP / XLOOKUP</span>
+                <span class="project-tag">Audit Reconciliations</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS MATRIX (技術能力) -->
+    <section class="section" id="skills">
+      <div class="container">
+        <span class="kanji-watermark">技術</span>
+        <div class="section-header">
+          <span class="kanji-sub">TECHNICAL COMPETENCIES &amp; STACK</span>
+          <h2 class="section-title">Skills &amp; Technology Matrix</h2>
+          <p class="section-desc">
+            A comprehensive overview of operating systems, scripting languages, administrative tools, and language proficiencies.
+          </p>
+          <div class="torii-divider" style="margin: 1.2rem 0 0;">
+            <div class="line"></div>
+            <span class="knot">⛩️</span>
+            <div class="line right"></div>
+          </div>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Card 1: Operating Systems & Linux Core -->
+          <div class="skill-category-card">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon">🐧</div>
+              <h3 class="skill-cat-title">Linux &amp; OS Systems</h3>
+            </div>
+            <div class="skill-list">
+              <div class="skill-row">
+                <div class="skill-info">
+                  <span class="skill-name">Red Hat Enterprise Linux (RHEL 9)</span>
+                  <span class="skill-level-text">RHCSA Certified</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div class="skill-bar-fill" style="width: 95%;"></div>
+                </div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-info">
+                  <span class="skill-name">CentOS / Fedora</span>
+                  <span class="skill-level-text">Advanced</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div class="skill-bar-fill" style="width: 88%;"></div>
+                </div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-info">
+                  <span class="skill-name">systemd &amp; Service Control</span>
+                  <span class="skill-level-text">Proficient</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div class="skill-bar-fill" style="width: 90%;"></div>
+                </div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-info">
+                  <span class="skill-name">LVM &amp; Storage Architecture</span>
+                  <span class="skill-level-text">Advanced</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div class="skill-bar-fill" style="width: 92%;"></div>
+                </div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-info">
+                  <span class="skill-name">Windows Client &amp; Server</span>
+                  <span class="skill-level-text">Proficient</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div class="skill-bar-fill" style="width: 82%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Scripting & Automation -->
+          <div class="skill-category-card">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon" style="color: var(--cyber-cyan);">⚡</div>
+              <h3 class="skill-cat-title">Automation &amp; Scripting</h3>
+            </div>
+            <div class="skill-list">
+              <div class="skill-row">
+                <div class="skill-info">
+                  <span class="skill-name">Bash Shell Scripting</span>
+                  <span class="skill-level-text">Proficient</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div class="skill-bar-fill jade" style="width: 85%;"></div>
+                </div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-info">
+                  <span class="skill-name">Python (Standard Lib / Automation)</span>
+                  <span class="skill-level-text">Hands-on</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div class="skill-bar-fill jade" style="width: 78%;"></div>
+                </div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-info">
+                  <span class="skill-name">Git Version Control</span>
+                  <span class="skill-level-text">Proficient</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div class="skill-bar-fill jade" style="width: 85%;"></div>
+                </div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-info">
+                  <span class="skill-name">Package Ops (dnf / rpm)</span>
+                  <span class="skill-level-text">Advanced</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div class="skill-bar-fill jade" style="width: 90%;"></div>
+                </div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-info">
+                  <span class="skill-name">HTML5 / CSS3</span>
+                  <span class="skill-level-text">Fundamental</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div class="skill-bar-fill jade" style="width: 72%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: IT Tools & Domain Knowledge -->
+          <div class="skill-category-card">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon" style="color: var(--gold-kintsugi);">🛠️</div>
+              <h3 class="skill-cat-title">Tools &amp; Engineering</h3>
+            </div>
+            <div class="skill-list">
+              <div class="skill-row">
+                <div class="skill-info">
+                  <span class="skill-name">VirtualBox / VMware</span>
+                  <span class="skill-level-text">Virtualization</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div class="skill-bar-fill gold" style="width: 88%;"></div>
+                </div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-info">
+                  <span class="skill-name">SSH &amp; Remote Administration</span>
+                  <span class="skill-level-text">Hardened</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div class="skill-bar-fill gold" style="width: 92%;"></div>
+                </div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-info">
+                  <span class="skill-name">Technical Runbooks &amp; Docs</span>
+                  <span class="skill-level-text">Diligent</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div class="skill-bar-fill gold" style="width: 85%;"></div>
+                </div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-info">
+                  <span class="skill-name">MS Excel &amp; Tally Accounting</span>
+                  <span class="skill-level-text">Commerce Pro</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div class="skill-bar-fill gold" style="width: 90%;"></div>
+                </div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-info">
+                  <span class="skill-name">AI Prompt Engineering</span>
+                  <span class="skill-level-text">Applied</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div class="skill-bar-fill gold" style="width: 85%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Spoken Languages Banner (Featuring JLPT N4) -->
+        <div class="languages-banner">
+          <div class="lang-left">
+            <div class="lang-icon-japan">⛩️</div>
+            <div>
+              <h3 class="lang-title">Spoken &amp; Written Languages (言語能力)</h3>
+              <p class="lang-sub">Bilingual communicator with certified Japanese proficiency for cross-border collaboration.</p>
+            </div>
+          </div>
+          <div class="lang-badges-group">
+            <div class="lang-badge highlight">
+              <span class="lang-name">日本語 (Japanese)</span>
+              <span class="lang-level">JLPT Level N4 Certified</span>
+            </div>
+            <div class="lang-badge">
+              <span class="lang-name">English</span>
+              <span class="lang-level">Fluent / Professional</span>
+            </div>
+            <div class="lang-badge">
+              <span class="lang-name">Hindi (हिन्दी)</span>
+              <span class="lang-level">Native Speaker (母国語)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION & TIMELINE (学歴) -->
+    <section class="section" id="education">
+      <div class="container">
+        <span class="kanji-watermark">学歴</span>
+        <div class="section-header text-center">
+          <span class="kanji-sub">ACADEMIC BACKGROUND</span>
+          <h2 class="section-title">Education &amp; Qualifications</h2>
+          <p class="section-desc">
+            Combining rigorous commerce fundamentals with deep self-directed engineering disciplines.
+          </p>
+          <div class="torii-divider">
+            <div class="line"></div>
+            <span class="knot">⛩️</span>
+            <div class="line right"></div>
+          </div>
+        </div>
+
+        <div class="timeline-wrap">
+          <!-- Item 1: University of Delhi -->
+          <div class="timeline-item active">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content-card">
+              <div class="timeline-top">
+                <span class="timeline-school">University of Delhi – School of Open Learning</span>
+                <span class="timeline-date">2022 – 2026</span>
+              </div>
+              <div class="timeline-degree">Bachelor of Commerce (Honours) [B.Com Hons]</div>
+              <p class="timeline-desc">
+                Engaged in foundational coursework covering business economics, accounting systems, audits, and commercial regulations, while concurrently building hands-on Linux system administration and Japanese language proficiency. Location: New Delhi, India.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 2: High School -->
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content-card">
+              <div class="timeline-top">
+                <span class="timeline-school">Rich Harvest Public School (CBSE)</span>
+                <span class="timeline-date">2020 – 2022</span>
+              </div>
+              <div class="timeline-degree">Senior Secondary (Class XII, 2022) • Secondary (Class X, 2020)</div>
+              <p class="timeline-desc">
+                Completed secondary and senior secondary education with focus on analytical studies, commerce, and computer fundamentals. Location: New Delhi, India.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION (連絡先) -->
+    <section class="section" id="contact">
+      <div class="container">
+        <span class="kanji-watermark">連絡</span>
+        <div class="section-header">
+          <span class="kanji-sub">GET IN TOUCH / お問い合わせ</span>
+          <h2 class="section-title">Let's Connect &amp; Collaborate</h2>
+          <p class="section-desc">
+            Actively seeking entry-level opportunities in Linux System Administration, IT Infrastructure, or Technical Support. Feel free to reach out directly!
+          </p>
+          <div class="torii-divider" style="margin: 1.2rem 0 0;">
+            <div class="line"></div>
+            <span class="knot">⛩️</span>
+            <div class="line right"></div>
+          </div>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Left Info Cards -->
+          <div class="contact-info-panel">
+            <a href="mailto:patwalpranav@gmail.com" class="contact-card-item" title="Send Email">
+              <div class="contact-icon-box">✉️</div>
+              <div class="contact-card-texts">
+                <span class="contact-card-label">EMAIL ADDRESS / メール</span>
+                <span class="contact-card-val">patwalpranav@gmail.com</span>
+              </div>
+            </a>
+
+            <a href="tel:+919643792352" class="contact-card-item" title="Call Direct">
+              <div class="contact-icon-box">📞</div>
+              <div class="contact-card-texts">
+                <span class="contact-card-label">PHONE NUMBER / 電話番号</span>
+                <span class="contact-card-val">+91 96437 92352</span>
+              </div>
+            </a>
+
+            <a href="https://linkedin.com/in/pranavpatwal" target="_blank" rel="noopener noreferrer" class="contact-card-item" title="Visit LinkedIn">
+              <div class="contact-icon-box">💼</div>
+              <div class="contact-card-texts">
+                <span class="contact-card-label">LINKEDIN PROFILE / 経歴</span>
+                <span class="contact-card-val">linkedin.com/in/pranavpatwal</span>
+              </div>
+            </a>
+
+            <div class="contact-card-item">
+              <div class="contact-icon-box">📍</div>
+              <div class="contact-card-texts">
+                <span class="contact-card-label">LOCATION / 所在地</span>
+                <span class="contact-card-val">New Delhi, India (ニューデリー)</span>
+              </div>
+            </div>
+
+            <!-- Traditional Hanko Seal Authenticity Box -->
+            <div class="hanko-auth-box">
+              <div class="hanko-stamp-large" title="Pranav's Authentic Stamp">普印</div>
+              <div class="hanko-text-desc">
+                <strong>PRANAV PATWAL (プラナヴ・パトワル)</strong><br>
+                Certified Red Hat System Administrator (RHCSA #240-166-678) &amp; JLPT N4 Japanese certified.
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Contact Form -->
+          <div class="contact-form-card">
+            <form id="portfolio-contact-form">
+              <div class="form-group">
+                <label for="form-name" class="form-label">YOUR NAME / お名前</label>
+                <input type="text" id="form-name" class="form-input" placeholder="e.g. Kenji Tanaka or Recruiter Name" required>
+              </div>
+
+              <div class="form-group">
+                <label for="form-email" class="form-label">EMAIL ADDRESS / メールアドレス</label>
+                <input type="email" id="form-email" class="form-input" placeholder="name@company.com" required>
+              </div>
+
+              <div class="form-group">
+                <label for="form-subject" class="form-label">SUBJECT / 件名</label>
+                <input type="text" id="form-subject" class="form-input" placeholder="Linux SysAdmin Role / Inquiry" required>
+              </div>
+
+              <div class="form-group">
+                <label for="form-message" class="form-label">MESSAGE / メッセージ内容</label>
+                <textarea id="form-message" class="form-textarea" placeholder="Hello Pranav, I came across your portfolio and would like to discuss..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn-primary btn-submit">
+                <span>Send Message / 送信</span>
+                <span>➔</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER (結び) -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-kanji-quote">千里の行も足下に始まる</div>
+      <div class="footer-quote-meaning">"A journey of a thousand miles begins with a single step." — Lao Tzu</div>
+
+      <div class="footer-socials">
+        <a href="https://linkedin.com/in/pranavpatwal" target="_blank" rel="noopener noreferrer" class="social-icon-link" title="LinkedIn" aria-label="LinkedIn">
+          <span>in</span>
+        </a>
+        <a href="mailto:patwalpranav@gmail.com" class="social-icon-link" title="Email Pranav" aria-label="Email">
+          <span>✉</span>
+        </a>
+        <a href="tel:+919643792352" class="social-icon-link" title="Phone Pranav" aria-label="Phone">
+          <span>☎</span>
+        </a>
+      </div>
+
+      <p class="footer-copy">
+        &copy; 2026 Pranav Patwal (プラナヴ・パトワル). Handcrafted with Japanese aesthetic &amp; Red Hat Linux precision.
+      </p>
+    </div>
+  </footer>
+
+  <!-- INTERACTIVE LINUX TERMINAL MODAL (RHEL 9 CLI) -->
+  <div class="terminal-modal-backdrop" id="terminal-modal" role="dialog" aria-modal="true" aria-label="Linux Terminal Simulator">
+    <div class="terminal-window">
+      <!-- Titlebar -->
+      <div class="terminal-titlebar">
+        <div class="terminal-titlebar-left">
+          <div class="terminal-controls">
+            <button class="t-btn t-btn-close" aria-label="Close Terminal" title="Close (exit)"></button>
+            <button class="t-btn t-btn-min" aria-label="Minimize Terminal" title="Minimize"></button>
+            <button class="t-btn t-btn-max" aria-label="Maximize Terminal" title="Maximize"></button>
+          </div>
+          <div class="terminal-title-text">
+            <span class="rhel-icon">🎩</span>
+            <span>pranav@rhel9-box: ~ (bash)</span>
+          </div>
+        </div>
+        <div class="terminal-titlebar-right">
+          <span class="terminal-rhcsa-tag">RHCSA #240-166-678</span>
+          <button class="terminal-close-icon" aria-label="Close Terminal">✕</button>
+        </div>
+      </div>
+
+      <!-- Terminal Body -->
+      <div class="terminal-body">
+        <div class="terminal-welcome">
+          <pre class="terminal-banner">
+  _____  _____            _   _            _____       _______      __     _      
+ |  __ \|  __ \     /\   | \ | |   /\     / ____|     |  __ \ \    / /\   | |     
+ | |__) | |__) |   /  \  |  \| |  /  \   | |  __      | |__) \ \  / /  \  | |     
+ |  ___/|  _  /   / /\ \ | . ` | / /\ \  | | |_ |     |  ___/ \ \/ / /\ \ | |     
+ | |    | | \ \  / ____ \| |\  |/ ____ \ | |__| |     | |      \  / ____ \| |____ 
+ |_|    |_|  \_\/_/    \_\_| \_/_/    \_\ \_____|     |_|       \/_/    \_\______|
+          </pre>
+          <div>Red Hat Enterprise Linux release 9.4 (Plow) — Kernel 5.14.0-427.el9.x86_64</div>
+          <div>Type <span class="t-green t-bold">help</span> to view available commands, or click the quick pills below.</div>
+        </div>
+
+        <div id="terminal-history" class="terminal-history"></div>
+
+        <div class="terminal-input-row">
+          <span class="t-prompt">[<span class="user">pranav</span>@<span class="path">rhel9-box</span> ~]$</span>
+          <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" spellcheck="false" autofocus>
+        </div>
+      </div>
+
+      <!-- Quick Command Bar -->
+      <div class="terminal-quick-cmds">
+        <span style="font-size: 0.72rem; color: #64748b; font-family: var(--font-mono); margin-right: 0.3rem;">QUICK:</span>
+        <button class="quick-cmd-pill" data-cmd="neofetch">neofetch</button>
+        <button class="quick-cmd-pill" data-cmd="whoami">whoami</button>
+        <button class="quick-cmd-pill" data-cmd="systemctl status career">systemctl status</button>
+        <button class="quick-cmd-pill" data-cmd="skills">skills</button>
+        <button class="quick-cmd-pill" data-cmd="certs">certs</button>
+        <button class="quick-cmd-pill" data-cmd="projects">projects</button>
+        <button class="quick-cmd-pill" data-cmd="japan">japan (日本語)</button>
+        <button class="quick-cmd-pill" data-cmd="clear">clear</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-notice" id="toast-notice">
+    <span>⛩️</span>
+    <span id="toast-message">Notification</span>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/sakura.js"></script>
+  <script src="js/terminal.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

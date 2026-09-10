@@ -1,0 +1,1695 @@
+/* ==========================================================================
+   PRANAV PATWAL — JAPANESE AESTHETIC LINUX PORTFOLIO
+   Design System: Sumi Ink, Torii Vermilion, Sakura Pink, and Cyber Terminal Jade
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;700&display=swap');
+
+:root {
+  /* Color Palette */
+  --bg-sumi-900: #06090e;
+  --bg-sumi-800: #0a0e17;
+  --bg-sumi-700: #101624;
+  --bg-sumi-600: #171f33;
+  --bg-card: rgba(16, 22, 36, 0.72);
+  --bg-card-hover: rgba(23, 31, 51, 0.88);
+  --bg-glass: rgba(16, 22, 36, 0.55);
+  
+  /* Japanese Theme Accents */
+  --torii-red: #ff385c;
+  --torii-vermilion: #ff4757;
+  --torii-glow: rgba(255, 56, 92, 0.35);
+  --sakura-pink: #fba4b6;
+  --sakura-glow: rgba(251, 164, 182, 0.3);
+  --cyber-jade: #00f5a0;
+  --cyber-cyan: #00d2ff;
+  --gold-kintsugi: #e0b354;
+  --gold-glow: rgba(224, 179, 84, 0.25);
+  
+  /* Typography Colors */
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #8492a6;
+  --text-kanji: rgba(255, 255, 255, 0.05);
+  
+  /* Borders & Shadows */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-accent: rgba(255, 56, 92, 0.3);
+  --border-highlight: rgba(0, 245, 160, 0.3);
+  --shadow-lg: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+  --shadow-neon: 0 0 25px var(--torii-glow);
+  --shadow-jade: 0 0 25px rgba(0, 245, 160, 0.25);
+  
+  /* Fonts */
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-jp: 'Zen Kaku Gothic New', 'Noto Sans JP', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  /* Transitions */
+  --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-snappy: all 0.2s ease;
+}
+
+/* Reset & Base Setup */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--bg-sumi-900);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.65;
+  overflow-x: hidden;
+  position: relative;
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(255, 56, 92, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 85% 65%, rgba(0, 210, 255, 0.05) 0%, transparent 45%),
+    radial-gradient(circle at 50% 90%, rgba(251, 164, 182, 0.05) 0%, transparent 40%);
+  background-attachment: fixed;
+}
+
+/* Japanese Canvas Background for Falling Sakura */
+#sakura-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Subtle Japanese Pattern Overlay */
+.pattern-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Typography Utilities */
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+  font-weight: 700;
+}
+
+.kanji-sub {
+  font-family: var(--font-jp);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--torii-red);
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.kanji-watermark {
+  position: absolute;
+  font-family: var(--font-jp);
+  font-size: 8rem;
+  font-weight: 900;
+  color: var(--text-kanji);
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+  top: -2.5rem;
+  right: 1.5rem;
+  line-height: 1;
+}
+
+/* ==========================================================================
+   NAVIGATION BAR
+   ========================================================================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  transition: var(--transition-smooth);
+  padding: 1.25rem 0;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(10, 14, 23, 0.75);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.hanko-seal {
+  width: 38px;
+  height: 38px;
+  border-radius: 6px;
+  border: 2px solid var(--torii-red);
+  color: var(--torii-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-jp);
+  font-size: 0.85rem;
+  font-weight: 900;
+  background: rgba(255, 56, 92, 0.08);
+  box-shadow: 0 0 12px var(--torii-glow);
+  transition: var(--transition-snappy);
+}
+
+.logo:hover .hanko-seal {
+  transform: rotate(6deg) scale(1.05);
+  background: rgba(255, 56, 92, 0.2);
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  font-family: var(--font-display);
+}
+
+.logo-role {
+  font-size: 0.68rem;
+  color: var(--cyber-jade);
+  font-family: var(--font-mono);
+  letter-spacing: 0.08em;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+  list-style: none;
+}
+
+.nav-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: var(--transition-snappy);
+  position: relative;
+  padding: 0.4rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav-link .nav-kanji {
+  font-family: var(--font-jp);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  transition: var(--transition-snappy);
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--text-primary);
+}
+
+.nav-link:hover .nav-kanji, .nav-link.active .nav-kanji {
+  color: var(--torii-red);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--torii-red), var(--sakura-pink));
+  transition: var(--transition-snappy);
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+  width: 100%;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Control Buttons (Terminal & Sakura Toggle) */
+.icon-btn {
+  background: var(--bg-sumi-700);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-snappy);
+  font-size: 1rem;
+}
+
+.icon-btn:hover {
+  background: var(--bg-sumi-600);
+  color: var(--text-primary);
+  border-color: var(--torii-red);
+  transform: translateY(-2px);
+}
+
+.btn-terminal-trigger {
+  background: rgba(0, 245, 160, 0.1);
+  border: 1px solid rgba(0, 245, 160, 0.3);
+  color: var(--cyber-jade);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: var(--transition-snappy);
+}
+
+.btn-terminal-trigger:hover {
+  background: rgba(0, 245, 160, 0.2);
+  box-shadow: 0 0 15px rgba(0, 245, 160, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-terminal-trigger .pulse-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--cyber-jade);
+  border-radius: 50%;
+  animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 245, 160, 0.7); }
+  70% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(0, 245, 160, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 245, 160, 0); }
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+.hero {
+  min-height: 100vh;
+  padding-top: 8rem;
+  padding-bottom: 5rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.hero-badge-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 30px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-card);
+  backdrop-filter: blur(10px);
+}
+
+.hero-pill.rhcsa {
+  border-color: rgba(255, 56, 92, 0.4);
+  color: #ff758c;
+  background: rgba(255, 56, 92, 0.1);
+}
+
+.hero-pill.japan {
+  border-color: rgba(251, 164, 182, 0.4);
+  color: var(--sakura-pink);
+  background: rgba(251, 164, 182, 0.1);
+}
+
+.hero-pill.location {
+  color: var(--text-secondary);
+}
+
+.hero-title-wrap {
+  margin-bottom: 1.25rem;
+}
+
+.hero-greeting {
+  font-family: var(--font-jp);
+  font-size: 1rem;
+  color: var(--torii-red);
+  letter-spacing: 0.2em;
+  margin-bottom: 0.4rem;
+  display: block;
+}
+
+.hero-name {
+  font-size: clamp(2.6rem, 5vw, 4.2rem);
+  line-height: 1.1;
+  background: linear-gradient(135deg, #ffffff 40%, #e2e8f0 70%, var(--sakura-pink) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  color: var(--cyber-jade);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-subtitle .cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1.2em;
+  background: var(--cyber-jade);
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.hero-bio {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 2.2rem;
+  max-width: 620px;
+}
+
+.hero-bio strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.hero-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+
+/* Premium Buttons */
+.btn-primary {
+  background: linear-gradient(135deg, var(--torii-red) 0%, #d82b47 100%);
+  color: #fff;
+  padding: 0.85rem 1.8rem;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  box-shadow: 0 4px 20px var(--torii-glow);
+  transition: var(--transition-smooth);
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(255, 56, 92, 0.5);
+  background: linear-gradient(135deg, #ff4d6d 0%, #e62343 100%);
+}
+
+.btn-secondary {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+  padding: 0.85rem 1.6rem;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  backdrop-filter: blur(10px);
+  transition: var(--transition-smooth);
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--torii-red);
+  transform: translateY(-3px);
+}
+
+.btn-terminal-inline {
+  background: rgba(0, 245, 160, 0.08);
+  border: 1px solid rgba(0, 245, 160, 0.3);
+  color: var(--cyber-jade);
+  padding: 0.85rem 1.6rem;
+  border-radius: 10px;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.92rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.btn-terminal-inline:hover {
+  background: rgba(0, 245, 160, 0.18);
+  box-shadow: var(--shadow-jade);
+  transform: translateY(-3px);
+}
+
+/* Quick Metrics Row */
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-subtle);
+  max-width: 580px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-val {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.stat-val span {
+  color: var(--torii-red);
+}
+
+.stat-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-family: var(--font-jp);
+  letter-spacing: 0.05em;
+}
+
+/* Hero Visual / Avatar Card */
+.hero-visual-card {
+  position: relative;
+}
+
+.avatar-frame {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--bg-sumi-800);
+}
+
+.avatar-frame::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 24px;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--torii-red), transparent 50%, var(--cyber-jade));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.avatar-img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.avatar-frame:hover .avatar-img {
+  transform: scale(1.03);
+}
+
+/* Floating HUD Tag Over Avatar */
+.avatar-hud-tag {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  background: rgba(10, 14, 23, 0.88);
+  border: 1px solid var(--border-subtle);
+  backdrop-filter: blur(14px);
+  padding: 1rem 1.2rem;
+  border-radius: 14px;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hud-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.hud-title {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--cyber-jade);
+}
+
+.hud-sub {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.hud-kanji-stamp {
+  font-family: var(--font-jp);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--torii-red);
+  background: rgba(255, 56, 92, 0.12);
+  border: 1px solid var(--torii-red);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+/* ==========================================================================
+   SECTION COMMON STYLES
+   ========================================================================== */
+.section {
+  padding: 6.5rem 0;
+  position: relative;
+}
+
+.section-header {
+  margin-bottom: 3.5rem;
+  position: relative;
+}
+
+.section-header.text-center {
+  text-align: center;
+}
+
+.section-title {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  color: var(--text-primary);
+  margin-top: 0.4rem;
+  margin-bottom: 0.75rem;
+  position: relative;
+  display: inline-block;
+}
+
+.section-desc {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  max-width: 650px;
+}
+
+.section-header.text-center .section-desc {
+  margin: 0 auto;
+}
+
+/* Japanese Torii Divider */
+.torii-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.5rem auto 0;
+  max-width: 220px;
+}
+
+.torii-divider .line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--torii-red));
+}
+
+.torii-divider .line.right {
+  background: linear-gradient(90deg, var(--torii-red), transparent);
+}
+
+.torii-divider .knot {
+  color: var(--torii-red);
+  font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   CERTIFICATIONS SECTION (資格認定)
+   ========================================================================== */
+.certs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.cert-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  padding: 2.2rem;
+  backdrop-filter: blur(16px);
+  position: relative;
+  transition: var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.cert-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--torii-red), var(--sakura-pink));
+  opacity: 0;
+  transition: var(--transition-snappy);
+}
+
+.cert-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 56, 92, 0.4);
+  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.7);
+  background: var(--bg-card-hover);
+}
+
+.cert-card:hover::before {
+  opacity: 1;
+}
+
+.cert-card.featured {
+  border-color: rgba(255, 56, 92, 0.35);
+  background: linear-gradient(145deg, rgba(255, 56, 92, 0.08) 0%, rgba(16, 22, 36, 0.85) 60%);
+}
+
+.cert-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.cert-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+}
+
+.cert-card.featured .cert-icon-wrap {
+  background: rgba(255, 56, 92, 0.15);
+  border-color: rgba(255, 56, 92, 0.3);
+  color: var(--torii-red);
+}
+
+.cert-card.jlpt .cert-icon-wrap {
+  background: rgba(251, 164, 182, 0.15);
+  border-color: rgba(251, 164, 182, 0.3);
+  color: var(--sakura-pink);
+}
+
+.cert-badge-pill {
+  font-family: var(--font-jp);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+}
+
+.cert-card.featured .cert-badge-pill {
+  background: rgba(255, 56, 92, 0.15);
+  color: var(--torii-red);
+  border-color: rgba(255, 56, 92, 0.3);
+}
+
+.cert-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.4rem;
+}
+
+.cert-issuer {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.cert-desc {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.cert-skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.8rem;
+}
+
+.cert-tag {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  padding: 0.25rem 0.6rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  color: var(--text-secondary);
+}
+
+.cert-footer {
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.82rem;
+}
+
+.credential-id-box {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  color: var(--cyber-jade);
+  background: rgba(0, 245, 160, 0.06);
+  padding: 0.3rem 0.65rem;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 245, 160, 0.15);
+  cursor: pointer;
+  transition: var(--transition-snappy);
+}
+
+.credential-id-box:hover {
+  background: rgba(0, 245, 160, 0.15);
+  border-color: rgba(0, 245, 160, 0.4);
+}
+
+.cert-date {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+
+/* ==========================================================================
+   TECHNICAL PROJECTS & HANDS-ON LABS (プロジェクト)
+   ========================================================================== */
+.projects-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2.8rem;
+}
+
+.project-feature-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 24px;
+  backdrop-filter: blur(16px);
+  padding: 2.8rem;
+  position: relative;
+  transition: var(--transition-smooth);
+}
+
+.project-feature-card:hover {
+  border-color: rgba(255, 56, 92, 0.35);
+  box-shadow: var(--shadow-lg);
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.project-meta-top {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.project-type-pill {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--torii-red);
+  background: rgba(255, 56, 92, 0.1);
+  border: 1px solid rgba(255, 56, 92, 0.25);
+  padding: 0.2rem 0.65rem;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.project-year {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.project-title {
+  font-size: 1.8rem;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.project-desc-points {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 1.8rem;
+}
+
+.project-desc-points li {
+  position: relative;
+  padding-left: 1.6rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.project-desc-points li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--torii-red);
+  font-weight: bold;
+}
+
+.project-desc-points li code {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--cyber-jade);
+  background: rgba(0, 245, 160, 0.08);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.project-tag {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+}
+
+/* Interactive Visual Architecture Box for Projects */
+.project-visual-terminal {
+  background: #06090e;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+}
+
+.pvt-header {
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.65rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pvt-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.pvt-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.pvt-dot.red { background: #ff5f56; }
+.pvt-dot.yellow { background: #ffbd2e; }
+.pvt-dot.green { background: #27c93f; }
+
+.pvt-title {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.pvt-body {
+  padding: 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+}
+
+.pvt-line {
+  margin-bottom: 0.4rem;
+}
+
+.pvt-prompt {
+  color: var(--torii-red);
+}
+
+.pvt-cmd {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.pvt-success {
+  color: var(--cyber-jade);
+}
+
+.pvt-accent {
+  color: var(--cyber-cyan);
+}
+
+.pvt-comment {
+  color: var(--text-muted);
+}
+
+/* Secondary Projects Grid */
+.secondary-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 2rem;
+}
+
+.sub-project-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  padding: 2.2rem;
+  backdrop-filter: blur(16px);
+  transition: var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sub-project-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 56, 92, 0.3);
+  box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.6);
+}
+
+/* ==========================================================================
+   SKILLS & DOMAIN MATRIX (技術スタック)
+   ========================================================================== */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.8rem;
+}
+
+.skill-category-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  padding: 2rem;
+  backdrop-filter: blur(16px);
+  position: relative;
+  transition: var(--transition-smooth);
+}
+
+.skill-category-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 245, 160, 0.3);
+  box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.6);
+}
+
+.skill-cat-header {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.skill-cat-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  color: var(--cyber-jade);
+}
+
+.skill-cat-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.skill-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.skill-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.skill-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.88rem;
+}
+
+.skill-name {
+  font-weight: 500;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.skill-name .skill-mono {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+.skill-level-text {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+
+.skill-bar-track {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  border-radius: 6px;
+  background: linear-gradient(90deg, var(--torii-red), var(--sakura-pink));
+  transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.skill-bar-fill.jade {
+  background: linear-gradient(90deg, #00d2ff, var(--cyber-jade));
+}
+
+.skill-bar-fill.gold {
+  background: linear-gradient(90deg, #f59e0b, var(--gold-kintsugi));
+}
+
+/* Spoken Languages Showcase Card */
+.languages-banner {
+  margin-top: 2.5rem;
+  background: linear-gradient(135deg, rgba(251, 164, 182, 0.08) 0%, rgba(16, 22, 36, 0.8) 100%);
+  border: 1px solid rgba(251, 164, 182, 0.25);
+  border-radius: 20px;
+  padding: 2rem 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.lang-left {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.lang-icon-japan {
+  font-size: 2.4rem;
+}
+
+.lang-title {
+  font-size: 1.3rem;
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+}
+
+.lang-sub {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.lang-badges-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.lang-badge {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 0.6rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.lang-badge.highlight {
+  background: rgba(251, 164, 182, 0.12);
+  border-color: rgba(251, 164, 182, 0.4);
+}
+
+.lang-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.lang-level {
+  font-size: 0.75rem;
+  color: var(--sakura-pink);
+  font-family: var(--font-jp);
+}
+
+/* ==========================================================================
+   EDUCATION & TIMELINE (学歴と歩み)
+   ========================================================================== */
+.timeline-wrap {
+  position: relative;
+  max-width: 860px;
+  margin: 0 auto;
+  padding-left: 2.5rem;
+}
+
+.timeline-wrap::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--torii-red) 0%, var(--sakura-pink) 50%, rgba(255, 255, 255, 0.1) 100%);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2.8rem;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: -2.5rem;
+  top: 5px;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--bg-sumi-900);
+  border: 3px solid var(--torii-red);
+  box-shadow: 0 0 10px var(--torii-glow);
+  z-index: 2;
+}
+
+.timeline-item.active .timeline-marker {
+  background: var(--torii-red);
+}
+
+.timeline-content-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 18px;
+  padding: 1.8rem 2.2rem;
+  backdrop-filter: blur(14px);
+  transition: var(--transition-smooth);
+}
+
+.timeline-content-card:hover {
+  border-color: rgba(255, 56, 92, 0.35);
+  transform: translateX(6px);
+}
+
+.timeline-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-date {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--cyber-jade);
+  background: rgba(0, 245, 160, 0.08);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+}
+
+.timeline-school {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+}
+
+.timeline-degree {
+  font-size: 0.95rem;
+  color: var(--torii-red);
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+
+.timeline-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   CONTACT SECTION (連絡先)
+   ========================================================================== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+.contact-info-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+.contact-card-item {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  text-decoration: none;
+  color: var(--text-primary);
+  backdrop-filter: blur(14px);
+  transition: var(--transition-smooth);
+}
+
+.contact-card-item:hover {
+  transform: translateY(-3px);
+  border-color: var(--torii-red);
+  background: var(--bg-card-hover);
+}
+
+.contact-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(255, 56, 92, 0.12);
+  border: 1px solid rgba(255, 56, 92, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  color: var(--torii-red);
+  flex-shrink: 0;
+}
+
+.contact-card-texts {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-card-label {
+  font-size: 0.75rem;
+  font-family: var(--font-jp);
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.contact-card-val {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Hanko Seal Authenticity Box */
+.hanko-auth-box {
+  background: rgba(255, 56, 92, 0.05);
+  border: 1px dashed rgba(255, 56, 92, 0.3);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.hanko-stamp-large {
+  width: 64px;
+  height: 64px;
+  border: 3px solid var(--torii-red);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-jp);
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--torii-red);
+  background: rgba(255, 56, 92, 0.1);
+  box-shadow: 0 0 15px var(--torii-glow);
+  transform: rotate(-4deg);
+  flex-shrink: 0;
+}
+
+.hanko-text-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Contact Form */
+.contact-form-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 24px;
+  padding: 2.5rem;
+  backdrop-filter: blur(16px);
+}
+
+.form-group {
+  margin-bottom: 1.4rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.4rem;
+  font-family: var(--font-mono);
+}
+
+.form-input, .form-textarea {
+  width: 100%;
+  background: rgba(10, 14, 23, 0.8);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 0.85rem 1.1rem;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  outline: none;
+  transition: var(--transition-snappy);
+}
+
+.form-input:focus, .form-textarea:focus {
+  border-color: var(--torii-red);
+  box-shadow: 0 0 15px var(--torii-glow);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 0.95rem;
+  font-size: 1rem;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.footer {
+  padding: 4rem 0 2.5rem;
+  border-top: 1px solid var(--border-subtle);
+  background: var(--bg-sumi-900);
+  position: relative;
+  z-index: 10;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+.footer-kanji-quote {
+  font-family: var(--font-jp);
+  font-size: 1.05rem;
+  letter-spacing: 0.25em;
+  color: var(--torii-red);
+}
+
+.footer-quote-meaning {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-top: -1rem;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.social-icon-link {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: var(--bg-sumi-700);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: var(--transition-snappy);
+}
+
+.social-icon-link:hover {
+  color: #fff;
+  border-color: var(--torii-red);
+  transform: translateY(-3px);
+  background: var(--bg-sumi-600);
+}
+
+.footer-copy {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+/* ==========================================================================
+   TOAST NOTIFICATION
+   ========================================================================== */
+.toast-notice {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--bg-sumi-800);
+  border: 1px solid var(--torii-red);
+  color: var(--text-primary);
+  padding: 0.8rem 1.4rem;
+  border-radius: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  box-shadow: var(--shadow-neon);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.toast-notice.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .hero-grid, .project-grid, .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .hero {
+    padding-top: 6.5rem;
+  }
+
+  .avatar-frame {
+    max-width: 360px;
+  }
+
+  .avatar-img {
+    height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: rgba(10, 14, 23, 0.98);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1.5rem;
+    border-bottom: 1px solid var(--border-subtle);
+    transform: translateY(-150%);
+    transition: transform 0.4s ease;
+  }
+
+  .nav-links.open {
+    transform: translateY(0);
+  }
+
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  .hero-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+  }
+
+  .stat-val {
+    font-size: 1.3rem;
+  }
+
+  .certs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-feature-card {
+    padding: 1.8rem;
+  }
+
+  .timeline-wrap {
+    padding-left: 2rem;
+  }
+
+  .timeline-marker {
+    left: -2rem;
+  }
+}
