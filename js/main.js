@@ -151,18 +151,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Sakura Toggle Button
-  const sakuraToggleBtn = document.getElementById('sakura-toggle-btn');
-  if (sakuraToggleBtn) {
-    sakuraToggleBtn.addEventListener('click', () => {
-      if (window.sakuraSim) {
-        const active = window.sakuraSim.toggle();
-        sakuraToggleBtn.title = active ? 'Pause Sakura (桜を停止)' : 'Resume Sakura (桜を再開)';
-        sakuraToggleBtn.style.opacity = active ? '1' : '0.45';
-        showToast(active ? 'Sakura petals active (桜舞う)' : 'Sakura petals paused');
-      }
-    });
-  }
 
   // Audio Toggle Button
   const audioToggleBtn = document.getElementById('audio-toggle-btn');

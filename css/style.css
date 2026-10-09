@@ -78,17 +78,6 @@ body {
   background-attachment: fixed;
 }
 
-/* Japanese Canvas Background for Falling Sakura */
-#sakura-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 1;
-}
-
 /* Subtle Japanese Pattern Overlay */
 .pattern-overlay {
   position: fixed;
@@ -274,7 +263,7 @@ h1, h2, h3, h4, .font-display {
   gap: 1rem;
 }
 
-/* Control Buttons (Terminal & Sakura Toggle) */
+/* Control Buttons (Audio & Action Controls) */
 .icon-btn {
   background: var(--bg-sumi-700);
   border: 1px solid var(--border-subtle);
